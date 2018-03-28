@@ -1,0 +1,80 @@
+<% provide(:title, "View Case") %>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Patientfname:</strong>
+  <%= @medevaccase.patientFname %>
+</p>
+
+<p>
+  <strong>Patientlname:</strong>
+  <%= @medevaccase.patientLname %>
+</p>
+
+<p>
+  <strong>Dob:</strong>
+  <%= @medevaccase.dob %>
+</p>
+
+<p>
+  <strong>Diagnosis:</strong>
+  <%= @medevaccase.diagnosis %>
+</p>
+
+<p>
+  <strong>Treatment:</strong>
+  <%= @medevaccase.treatment %>
+</p>
+
+<p>
+  <strong>Catname:</strong>
+  <%= @medevaccase.catName %>
+</p>
+
+<p>
+  <strong>Startdate:</strong>
+  <%= @medevaccase.startDate %>
+</p>
+
+<p>
+  <strong>Completiondate:</strong>
+  <%= @medevaccase.completionDate %>
+</p>
+
+<p>
+  <strong>Tocountry:</strong>
+  <%= @medevaccase.toCountry %>
+</p>
+
+<p>
+  <strong>Fromcountry:</strong>
+  <%= @medevaccase.fromCountry %>
+</p>
+
+<p>
+  <strong>Currenthospitalname:</strong>
+  <%= @medevaccase.currentHospitalName %>
+</p>
+
+<p>
+  <strong>Currenthospitaladdress:</strong>
+  <%= @medevaccase.currentHospitalAddress %>
+</p>
+
+<p>
+  <strong>Receivinghospitalname:</strong>
+  <%= @medevaccase.receivingHospitalName %>
+</p>
+
+<p>
+  <strong>Receivinghospitaladdress:</strong>
+  <%= @medevaccase.receivingHospitalAddress %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @medevaccase.notes %>
+</p>
+
+<%= link_to 'Edit', edit_medevaccase_path(@medevaccase), class:"btn btn-info" %> |
+<%= link_to 'Back', medevaccases_path, class:"btn btn-info" %>

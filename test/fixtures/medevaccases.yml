@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  patientFname: MyString
+  patientLname: MyString
+  dob: 2018-03-26
+  diagnosis: MyString
+  treatment: MyString
+  catName: MyString
+  startDate: 2018-03-26
+  completionDate: 2018-03-26
+  toCountry: MyString
+  fromCountry: MyString
+  currentHospitalName: MyString
+  currentHospitalAddress: MyString
+  receivingHospitalName: MyString
+  receivingHospitalAddress: MyString
+  notes: MyString
+
+two:
+  patientFname: MyString
+  patientLname: MyString
+  dob: 2018-03-26
+  diagnosis: MyString
+  treatment: MyString
+  catName: MyString
+  startDate: 2018-03-26
+  completionDate: 2018-03-26
+  toCountry: MyString
+  fromCountry: MyString
+  currentHospitalName: MyString
+  currentHospitalAddress: MyString
+  receivingHospitalName: MyString
+  receivingHospitalAddress: MyString
+  notes: MyString

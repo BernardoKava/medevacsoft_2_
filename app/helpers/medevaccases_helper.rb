@@ -1,0 +1,2 @@
+module MedevaccasesHelper
+end

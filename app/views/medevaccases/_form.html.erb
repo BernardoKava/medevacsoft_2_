@@ -1,0 +1,118 @@
+<% provide(:title, "Case Form") %>
+<%= form_with(model: medevaccase, local: true) do |form| %>
+  <% if medevaccase.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(medevaccase.errors.count, "error") %> prohibited this medevaccase from being saved:</h2>
+
+      <ul>
+      <% medevaccase.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :patientFname %>
+    <%= form.text_field :patientFname, id: :medevaccase_patientFname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :patientLname %>
+    <%= form.text_field :patientLname, id: :medevaccase_patientLname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dob %>
+    <%= form.date_select :dob, id: :medevaccase_dob %>
+  </div>
+
+  <div class="field">
+    <%= form.label :diagnosis %>
+    <%= form.text_field :diagnosis, id: :medevaccase_diagnosis %>
+  </div>
+
+  <div class="field">
+    <%= form.label :treatment %>
+    <%= form.text_field :treatment, id: :medevaccase_treatment %>
+  </div>
+
+  <div class="field">
+    <%= form.label :catName %>
+    <%= form.text_field :catName, id: :medevaccase_catName %>
+  </div>
+
+  <div class="field">
+    <%= form.label :startDate %>
+    <%= form.date_select :startDate, id: :medevaccase_startDate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :completionDate %>
+    <%= form.date_select :completionDate, id: :medevaccase_completionDate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :toCountry %>
+    <%= form.text_field :toCountry, id: :medevaccase_toCountry %>
+  </div>
+
+
+
+
+
+
+  <div class="field">
+
+    <%= form.label :fromCountry %>
+
+    <%= form.text_field :fromCountry, id: :medevaccase_fromCountry %>
+  </div>
+
+
+
+
+  <div class="control-group">
+
+    <%= form.label "From (County)", class: 'control-label' %>
+    <div class ="controls">
+      <%= form.select(:fromCountry, options_for_select([['Congo','Congo'], ['France','France']])) %>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+  <div class="field">
+    <%= form.label :currentHospitalName %>
+    <%= form.text_field :currentHospitalName, id: :medevaccase_currentHospitalName %>
+  </div>
+
+  <div class="field">
+    <%= form.label :currentHospitalAddress %>
+    <%= form.text_field :currentHospitalAddress, id: :medevaccase_currentHospitalAddress %>
+  </div>
+
+  <div class="field">
+    <%= form.label :receivingHospitalName %>
+    <%= form.text_field :receivingHospitalName, id: :medevaccase_receivingHospitalName %>
+  </div>
+
+  <div class="field">
+    <%= form.label :receivingHospitalAddress %>
+    <%= form.text_field :receivingHospitalAddress, id: :medevaccase_receivingHospitalAddress %>
+  </div>
+
+  <div class="field">
+    <%= form.label :notes %>
+    <%= form.text_field :notes, id: :medevaccase_notes %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

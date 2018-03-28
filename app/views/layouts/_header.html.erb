@@ -1,0 +1,26 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <%= link_to "MEDEVACsoft", root_path, id: "logo" %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "About", about_path %></li>
+        <li><%= link_to "Contact", contact_path %></li>
+        <li><%= link_to "Help", help_path %></li>
+
+        <% if current_user %>
+
+            <li><%= link_to "Cases", medevaccases_path %></li>
+            <li><%= link_to "Settings", edit_user_registration_path %></li>
+            <li>
+              <%= link_to "logout", destroy_user_session_path, method: :delete %>
+            </li>
+            </ul>
+          </li>
+        <% else %>
+          <li><%= link_to "login", new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>
