@@ -18,6 +18,9 @@ gem 'bootstrap-sass', '3.3.7'
 gem 'devise'
 gem 'gravtastic'
 gem 'rails_admin'
+gem 'mailboxer'
+
+
 
 
 group :development, :test do
