@@ -19,8 +19,9 @@ gem 'devise'
 gem 'gravtastic'
 gem 'rails_admin'
 gem 'mailboxer'
-
-
+gem 'mini_magick'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate', '1.0.0'
 
 
 group :development, :test do

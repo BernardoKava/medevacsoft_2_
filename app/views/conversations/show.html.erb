@@ -1,0 +1,54 @@
+<h2>Subject:</h2><h2><%= @conversation.subject %></h2>
+<hr />
+<h5>From:</h5>
+<hr />
+<%= current_user.email %>
+
+
+<hr />
+<h5>To:</h5>
+<hr />
+<% @conversation.participants.each do |participant| %>
+  <div>
+    <%= participant.email %>
+  </div>
+<% end %>
+
+<hr />
+
+
+<% @conversation.receipts_for(current_user).each do |receipt| %>
+<div>
+ <div><%= receipt.message.sender.email%> Wrote:</div>
+  <p><%= receipt.message.body %></p>
+
+  <% if receipt.message.attachment? %>
+  <strong>Attached File</strong>
+    <%= link_to receipt.message.attachment.file.filename, receipt.message.attachment.url, target: :blank %>
+  <% end %>
+</div>
+<% end %>
+
+<hr />
+<h5>New CaseMail:</h5>
+<hr />
+
+<%= form_for @message, url: conversation_messages_path(@conversation) do |f| %>
+  <div>
+    <%= f.text_area :body %>
+  </div>
+
+  <div>
+    <%= f.file_field :attachment %>
+  </div>
+<hr />
+  <%= f.submit %>
+
+<% end %>
+<hr />
+<%=link_to "CaseMails [All]", all_conversations_path, class: "btn btn-primary" %>
+<%= link_to "Inbox", inbox_conversations_path, class: "btn btn-primary" %>
+
+
+
+

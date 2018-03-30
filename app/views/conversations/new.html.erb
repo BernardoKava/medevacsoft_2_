@@ -1,0 +1,23 @@
+<h2>(CaseMail) New Case Conversation </h2>
+
+<%= form_tag conversations_path, method: :post do %>
+
+  <div>
+    <%= select_tag :user_ids, options_from_collection_for_select(@recipients, :id, :email), multiple: true,
+                   :required => 'required' %>
+  </div>
+
+  <div>
+    <%= text_field_tag :subject, nil, placeholder: "Subject", :required => 'required' %>
+  </div>
+
+  <div>
+    <%= text_area_tag :body, nil, placeholder: "Comment" , :required => 'required' %>
+  </div>
+
+  <hr />
+  <%= submit_tag %>
+
+  <%=link_to "CaseMails [All]", all_conversations_path, class: "btn btn-primary" %>
+
+<% end %>
