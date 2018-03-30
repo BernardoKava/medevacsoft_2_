@@ -1,0 +1,33 @@
+<h2>My CaseMails [All]</h2>
+
+
+<hr />
+
+| inbox (<%= current_user.mailbox.inbox.unread(current_user).count %>) |
+All CaseMails (<%= current_user.mailbox.conversations.count %>) |
+CaseMails Sent (<%= current_user.mailbox.sentbox.count %>) |
+
+
+<hr />
+
+<strong>Total: <%= @conversations.count %></strong>
+
+
+<% @conversations.each do |conversation| %>
+  <div>
+    <% if conversation.is_unread?(current_user) %>
+      <strong><%= link_to conversation.subject, conversation_path(conversation) %></strong>
+    <% else %>
+      <%= link_to conversation.subject, conversation_path(conversation) %>
+    <% end %>
+  </div>
+<% end %>
+
+<hr />
+  <%= will_paginate @conversations %>
+<hr />
+
+<%= link_to "CaseMails [All]", all_conversations_path, class: "btn btn-primary" %>
+<%= link_to "New CaseMail", new_conversation_path, class: "btn btn-primary" %>
+<%= link_to "Inbox", inbox_conversations_path, class: "btn btn-primary" %>
+<%= link_to "Dashboard", dashboard_index_path, class: "btn btn-danger" %>
