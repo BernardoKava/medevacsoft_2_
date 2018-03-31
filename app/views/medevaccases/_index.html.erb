@@ -1,0 +1,68 @@
+<% provide(:title, "Medevac Cases") %>
+<p id="notice"><%= notice %></p>
+
+<h2>Medevac cases [All]</h2>
+
+<div class="table-wrapper">
+  <table>
+    <thead>
+    <tr>
+      <th>Case Reference</th>
+      <th>Case Owner Reference</th>
+      <th>Patient First Name</th>
+      <th>Patient Last Name</th>
+      <th>DOB</th>
+      <th>Diagnosis</th>
+      <th>Treatment</th>
+      <th>Category</th>
+      <th>Start Date</th>
+      <th>Completion Date</th>
+      <th>To Country</th>
+      <th>From Country</th>
+      <th>Current Hospital Name</th>
+      <th>Current Hospital Address</th>
+      <th>Receiving Hospital Name</th>
+      <th>Receiving hospital Address</th>
+      <th>Case Notes</th>
+      <th>Mission Complete</th>
+      <th colspan="3"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @medevaccases.each do |medevaccase| %>
+      <tr>
+        <td><%= medevaccase.id %></td>
+        <td><%= medevaccase.user_id %></td>
+        <td><%= medevaccase.patientFname %></td>
+        <td><%= medevaccase.patientLname %></td>
+        <td><%= medevaccase.dob %></td>
+        <td><%= medevaccase.diagnosis %></td>
+        <td><%= medevaccase.treatment %></td>
+        <td><%= medevaccase.catName %></td>
+        <td><%= medevaccase.startDate %></td>
+        <td><%= medevaccase.completionDate %></td>
+        <td><%= medevaccase.toCountry %></td>
+        <td><%= medevaccase.fromCountry %></td>
+        <td><%= medevaccase.currentHospitalName %></td>
+        <td><%= medevaccase.currentHospitalAddress %></td>
+        <td><%= medevaccase.receivingHospitalName %></td>
+        <td><%= medevaccase.receivingHospitalAddress %></td>
+        <td><%= medevaccase.notes %></td>
+        <td><%= medevaccase.missioncomplete %></td>
+        <td><%= link_to 'view', medevaccase, class: "btn btn-primary" %></td>
+        <td><%= link_to 'Edit', edit_medevaccase_path(medevaccase), class:"btn btn-info" %></td>
+        <td><%= link_to 'Delete', medevaccase, method: :delete, data: { confirm: 'Are you sure?' },
+                        class:"btn btn-danger" %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+<br>
+
+<hr />
+
+<%= link_to 'New Medevaccase', new_medevaccase_path, class:"btn btn-primary" %>
+<%= link_to 'Dashboard', dashboard_index_path, class:"btn btn-danger" %>
+

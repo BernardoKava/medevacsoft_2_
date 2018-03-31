@@ -1,18 +1,35 @@
 <% provide(:title, "View Case") %>
 <p id="notice"><%= notice %></p>
 
+
+
 <p>
-  <strong>Patientfname:</strong>
+  <strong>Case Reference:</strong>
+  <%= @medevaccase.id %>
+</p>
+
+<p>
+  <strong>Case Owner Reference:</strong>
+  <%= @medevaccase.user_id %>
+</p>
+
+<p>
+  <strong>Case Owner Email:</strong>
+  <%= @medevaccase.email %>
+</p>
+
+<p>
+  <strong>Patient First Name:</strong>
   <%= @medevaccase.patientFname %>
 </p>
 
 <p>
-  <strong>Patientlname:</strong>
+  <strong>Patient Last Name:</strong>
   <%= @medevaccase.patientLname %>
 </p>
 
 <p>
-  <strong>Dob:</strong>
+  <strong>DOB:</strong>
   <%= @medevaccase.dob %>
 </p>
 
@@ -27,53 +44,58 @@
 </p>
 
 <p>
-  <strong>Catname:</strong>
+  <strong>Case Category:</strong>
   <%= @medevaccase.catName %>
 </p>
 
 <p>
-  <strong>Startdate:</strong>
+  <strong>Case Start Date:</strong>
   <%= @medevaccase.startDate %>
 </p>
 
 <p>
-  <strong>Completiondate:</strong>
+  <strong>Case Completion Date:</strong>
   <%= @medevaccase.completionDate %>
 </p>
 
 <p>
-  <strong>Tocountry:</strong>
+  <strong>To Country:</strong>
   <%= @medevaccase.toCountry %>
 </p>
 
 <p>
-  <strong>Fromcountry:</strong>
+  <strong>From Country:</strong>
   <%= @medevaccase.fromCountry %>
 </p>
 
 <p>
-  <strong>Currenthospitalname:</strong>
+  <strong>Current Hospital Name:</strong>
   <%= @medevaccase.currentHospitalName %>
 </p>
 
 <p>
-  <strong>Currenthospitaladdress:</strong>
+  <strong>Current Hospital Address:</strong>
   <%= @medevaccase.currentHospitalAddress %>
 </p>
 
 <p>
-  <strong>Receivinghospitalname:</strong>
+  <strong>Receiving Hospital Name:</strong>
   <%= @medevaccase.receivingHospitalName %>
 </p>
 
 <p>
-  <strong>Receivinghospitaladdress:</strong>
+  <strong>Receiving Hospital Address:</strong>
   <%= @medevaccase.receivingHospitalAddress %>
 </p>
 
 <p>
-  <strong>Notes:</strong>
+  <strong>Case Notes:</strong>
   <%= @medevaccase.notes %>
+</p>
+
+<p>
+  <strong>Mission Complete:</strong>
+  <%= @medevaccase.missioncomplete %>
 </p>
 
 <%= link_to 'Edit', edit_medevaccase_path(@medevaccase), class:"btn btn-info" %> |

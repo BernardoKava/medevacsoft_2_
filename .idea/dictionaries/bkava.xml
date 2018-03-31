@@ -2,14 +2,23 @@
   <dictionary name="bkava">
     <words>
       <w>aams</w>
+      <w>caseisopen</w>
+      <w>casestate</w>
       <w>csoft</w>
+      <w>dispatchercreate</w>
+      <w>dispatcherindex</w>
+      <w>dispatchernew</w>
       <w>homepageimages</w>
       <w>jumbotron</w>
       <w>kava</w>
       <w>medevac</w>
+      <w>medevaccasecreator</w>
       <w>medevaccases</w>
       <w>medevacsoft</w>
+      <w>missioncompete</w>
+      <w>missioncomplete</w>
       <w>navbar</w>
+      <w>opencases</w>
       <w>turbolinks</w>
       <w>widefooter</w>
     </words>
