@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  get 'dispatcherdash/index'
+
   get 'messages/create'
 
   get 'conversations/index'
@@ -8,6 +10,12 @@ Rails.application.routes.draw do
   get 'conversation/index'
 
   get 'dashboard/index'
+
+  get 'medevaccases/dispatcherindex'
+
+  get 'medevaccases/dispatcheropencases'
+
+  get 'medevaccases/opencases'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users

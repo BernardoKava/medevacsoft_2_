@@ -249,3 +249,12 @@ th {
   background-color: #4CAF50;
   color: white;
 }
+
+/*Wrap a table*/
+.table-wrapper
+{
+  border: 1px green;
+  width: 1140px;
+  height: 500px;
+  overflow: auto;
+}
