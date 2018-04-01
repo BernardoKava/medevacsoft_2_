@@ -1,74 +1,74 @@
 <% provide(:title ) %>
-<%= form_with(model: medevaccase, local: true) do |form| %>
+<%= form_for @medevaccase do |f| %>
   <% if medevaccase.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(medevaccase.errors.count, "error") %> prohibited this medevaccase from being saved:</h2>
 
       <ul>
-      <% medevaccase.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% medevaccase.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
+  <hr />
 
+  <strong><h2>A. Case Owner Details</h2></strong>
   <div class="field">
-    <%= form.label "Owner Reference:" %>
-    <%= form.text_field :user_id, id: :medevaccase_user_id %>
+    <%= f.label "Case Owner Reference:" %>
+    <%= f.text_field :user_id %>
   </div>
 
   <div class="field">
-    <%= form.label "Owner email:" %>
-    <%= form.text_field :email, id: :medevaccase_email %>
+    <%= f.label "Case Owner email:" %>
+    <%= f.text_field :email ,value: current_user.email, :disabled => false %>
   </div>
 
   <div class="field">
-    <%= form.label "[Patient] First Name:" %>
-    <%= form.text_field :patientFname, id: :medevaccase_patientFname %>
+    <%= f.label "Case Owner Company:" %>
+    <%= f.text_field :caseownercompany ,value: current_user.companyalias , :disabled => false%>
+  </div>
+
+  <hr />
+
+  <strong><h2>B. Patient Details</h2></strong>
+  <div class="patient-details ">
+    <%= f.fields_for :patients do |patient| %>
+
+      <%= render 'patient_fields', :f => patient %>
+
+    <% end %>
+    <div class = "links">
+      <%= link_to_add_association 'Add Patient', f, :patients %>
+      <p class="count">Total: <span><%= @medevaccase.patients.count %></span></p>
+    </div>
+  </div>
+
+  <hr />
+  <strong><h2>C. Case Details</h2></strong>
+
+  <div class="field">
+    <%= f.label "[Case] Category:" %>
+    <%= f.text_field :catName %>
   </div>
 
   <div class="field">
-    <%= form.label "[Patient] Last Name:" %>
-    <%= form.text_field :patientLname, id: :medevaccase_patientLname %>
+    <%= f.label "[Case] Start Date:" %>
+    <%= f.date_select :startDate %>
   </div>
 
   <div class="field">
-    <%= form.label "[Patient] Date Of Birth:" %>
-    <%= form.date_select :dob, id: :medevaccase_dob %>
-  </div>
-
-  <div class="field">
-    <%= form.label "[Patient] Diagnosis:" %>
-    <%= form.text_field :diagnosis, id: :medevaccase_diagnosis %>
-  </div>
-
-  <div class="field">
-    <%= form.label "[Patient] Treatment:" %>
-    <%= form.text_field :treatment, id: :medevaccase_treatment %>
-  </div>
-
-  <div class="field">
-    <%= form.label "[Case] Category:" %>
-    <%= form.text_field :catName, id: :medevaccase_catName %>
-  </div>
-
-  <div class="field">
-    <%= form.label "[Case] Start Date:" %>
-    <%= form.date_select :startDate, id: :medevaccase_startDate %>
-  </div>
-
-  <div class="field">
-    <%= form.label "[Case] Completion Date:" %>
-    <%= form.date_select :completionDate, id: :medevaccase_completionDate %>
+    <%= f.label "[Case] Completion Date:" %>
+    <%= f.date_select :completionDate %>
   </div>
 
 
 
   <div class="control-group">
 
-    <%= form.label "From (County):", class: 'control-label' %>
+    <%= f.label "From (County):", class: 'control-label' %>
     <div class ="controls">
-      <%= form.select(:fromCountry, options_for_select([['Congo','Congo'], ['France','France']])) %>
+      <%= f.select(:fromCountry, options_for_select([['Congo','Congo'], ['France','France']])) %>
     </div>
 
   </div>
@@ -77,49 +77,57 @@
 
 
   <div class="field">
-    <%= form.label :toCountry %>
-    <%= form.text_field :toCountry, id: :medevaccase_toCountry %>
+    <%= f.label :toCountry %>
+    <%= f.text_field :toCountry %>
   </div>
 
 
+  <strong><h2>C. Hospital Details</h2></strong>
+
+
   <div class="field">
-    <%= form.label "[Patient] Current Hospital Name:" %>
-    <%= form.text_field :currentHospitalName, id: :medevaccase_currentHospitalName %>
+    <%= f.label "[Patient] Current Hospital Name:" %>
+    <%= f.text_field :currentHospitalName %>
   </div>
 
   <div class="field">
-    <%= form.label "[Patient] Current Hospital Address:" %>
-    <%= form.text_field :currentHospitalAddress, id: :medevaccase_currentHospitalAddress %>
+    <%= f.label "[Patient] Current Hospital Address:" %>
+    <%= f.text_field :currentHospitalAddress %>
   </div>
 
   <div class="field">
-    <%= form.label "[Patient] Receiving Hospital Name:" %>
-    <%= form.text_field :receivingHospitalName, id: :medevaccase_receivingHospitalName %>
+    <%= f.label "[Patient] Receiving Hospital Name:" %>
+    <%= f.text_field :receivingHospitalName %>
   </div>
 
   <div class="field">
-    <%= form.label "[Patient] Receiving Hospital Address:" %>
-    <%= form.text_field :receivingHospitalAddress, id: :medevaccase_receivingHospitalAddress %>
+    <%= f.label "[Patient] Receiving Hospital Address:" %>
+    <%= f.text_field :receivingHospitalAddress %>
   </div>
 
   <div class="field">
-    <%= form.label "Case Notes" %>
-    <%= form.text_area :notes, id: :medevaccase_notes %>
+    <%= f.label "Case Notes" %>
+    <%= f.text_area :notes %>
   </div>
 
 
   <div class="control-group">
 
-    <%= form.label "Mission Complete:", class: 'control-label' %>
+    <%= f.label "Mission Complete:", class: 'control-label' %>
     <div class ="controls">
-      <%= form.select(:missioncomplete, options_for_select([['No','No'], ['Yes','Yes']])) %>
+      <%= f.select(:missioncomplete, options_for_select([['No','No'], ['Yes','Yes']])) %>
     </div>
 
   </div>
+
 
 
   <div class="actions">
-    <%= form.submit %>
+
+      <%= f.submit 'Save',data: { confirm: 'Saving the case may change its ownership.
+Please check to ensure that the owner has been assigned properly.
+Are you sure you want to proceed?'} %>
+
   </div>
 
 <% end %>

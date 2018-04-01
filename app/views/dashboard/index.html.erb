@@ -23,9 +23,15 @@
   <div class = "vertical-menu">
     <li><%= link_to "Directories", '#'%></li>
     <li><%= link_to "CaseMails", all_conversations_path %></li>
+    <li><%= link_to "Hospitals", hospitals_path %></li>
     <% if current_user.admin == true %>
       <li><%= link_to "Administration Area", rails_admin_path %></li>
     <% end %>
+
+    <% if current_user.clientadmin == true %>
+      <li><%= link_to "Management View", medevaccases_distribution_path %></li>
+    <% end %>
+
   </div>
 
 <% else %>
@@ -45,6 +51,10 @@
         <li><%= link_to "Open New-Case", new_medevaccase_path %></li>
         <li><%= link_to "View Closed Cases", '#'%></li>
         <li><%= link_to "CaseMails", all_conversations_path %></li>
+        <li><%= link_to "Hospitals", hospitals_path %></li>
+        <% if current_user.clientadmin == true %>
+          <li><%= link_to "Management View", medevaccases_distribution_path %></li>
+        <% end %>
       </div>
     <hr />
   </div>

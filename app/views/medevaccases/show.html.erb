@@ -9,39 +9,67 @@
 </p>
 
 <p>
-  <strong>Case Owner Reference:</strong>
-  <%= @medevaccase.user_id %>
+  <strong>Case Owner Company:</strong>
+  <%= @medevaccase.caseownercompany %>
 </p>
+
 
 <p>
   <strong>Case Owner Email:</strong>
   <%= @medevaccase.email %>
 </p>
 
-<p>
-  <strong>Patient First Name:</strong>
-  <%= @medevaccase.patientFname %>
-</p>
 
-<p>
-  <strong>Patient Last Name:</strong>
-  <%= @medevaccase.patientLname %>
-</p>
+<div>
+  <% for patient in @medevaccase.patients %>
+    <p>
+      <strong>[Patient] First Name:</strong>
+        <%=h patient.fname %>
+    </p>
 
-<p>
-  <strong>DOB:</strong>
-  <%= @medevaccase.dob %>
-</p>
+    <p>
+      <strong>[Patient] Last Name:</strong>
+      <%=h patient.lname %>
+    </p>
 
-<p>
-  <strong>Diagnosis:</strong>
-  <%= @medevaccase.diagnosis %>
-</p>
+    <p>
+      <strong>[Patient] DOB:</strong>
+      <%=h patient.dob %>
+    </p>
 
-<p>
-  <strong>Treatment:</strong>
-  <%= @medevaccase.treatment %>
-</p>
+    <p>
+      <strong>[Patient] Diagnosis:</strong>
+      <%=h patient.diagnosis %>
+    </p>
+
+    <p>
+      <strong>[Patient] Treatment:</strong>
+      <%=h patient.treatment %>
+    </p>
+
+    <p>
+      <strong>[Patient] Phone:</strong>
+      <%=h patient.phone %>
+    </p>
+
+    <p>
+      <strong>[Patient] Email:</strong>
+      <%=h patient.email %>
+    </p>
+
+    <p>
+      <strong>[Patient] Nationality:</strong>
+      <%=h patient.nationality %>
+    </p>
+  <% end %>
+</div>
+
+
+
+
+
+
+
 
 <p>
   <strong>Case Category:</strong>
@@ -90,7 +118,9 @@
 
 <p>
   <strong>Case Notes:</strong>
+  <textarea rows="4" cols="50" readonly>
   <%= @medevaccase.notes %>
+  </textarea>
 </p>
 
 <p>

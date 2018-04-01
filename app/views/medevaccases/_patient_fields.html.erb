@@ -1,0 +1,53 @@
+
+    <div class="nested-fields">
+
+      <div class = "field">
+        <%= f.label  "[Patient] First name"  %>
+        <%= f.text_field :fname %>
+      </div>
+
+      <div class = "field">
+        <%= f.label "[Patient] Last Name" %>
+        <%= f.text_field :lname %>
+      </div>
+
+      <div class = "field">
+        <%= f.label "[Patient] Date of Birth" %>
+        <%= f.text_field :dob %>
+      </div>
+
+      <div class = "field">
+        <%= f.label  "[Patient] Diagnosis" %>
+        <%= f.text_field :diagnosis %>
+      </div>
+
+      <div class ="field">
+        <%= f.label "[Patient] Treatment" %>
+        <%= f.text_field :treatment %>
+      </div>
+
+      <div class = "field">
+        <%= f.label "[Patient] Phone" %>
+        <%= f.text_field :phone %>
+      </div>
+
+      <div class = "field">
+        <%= f.label :"[Patient] email" %>
+        <%= f.text_field :email %>
+      </div>
+
+      <div class = "field">
+        <%= f.label "[Patient] Nationality" %>
+        <%= f.text_field :nationality %>
+      </div>
+
+      <%= link_to_remove_association 'Remove Patient', f %>
+
+
+    </div>
+
+<hr />
+
+
+<hr />
+

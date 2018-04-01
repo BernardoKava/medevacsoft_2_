@@ -8,13 +8,8 @@
   <thead>
   <tr>
     <th>Case Reference</th>
-    <th>Case Owner Reference</th>
     <th>Case Owner email</th>
-    <th>Patient First Name</th>
-    <th>Patient Last Name</th>
-    <th>DOB</th>
-    <th>Diagnosis</th>
-    <th>Treatment</th>
+    <th>Case Owner Company</th>
     <th>Category</th>
     <th>Start Date</th>
     <th>Completion Date</th>
@@ -34,13 +29,8 @@
   <% @medevaccases.each do |medevaccase| %>
     <tr>
       <td><%= medevaccase.id %></td>
-      <td><%= medevaccase.user_id %></td>
       <td><%= medevaccase.email %></td>
-      <td><%= medevaccase.patientFname %></td>
-      <td><%= medevaccase.patientLname %></td>
-      <td><%= medevaccase.dob %></td>
-      <td><%= medevaccase.diagnosis %></td>
-      <td><%= medevaccase.treatment %></td>
+      <td><%= medevaccase.caseownercompany %></td>
       <td><%= medevaccase.catName %></td>
       <td><%= medevaccase.startDate %></td>
       <td><%= medevaccase.completionDate %></td>
@@ -53,9 +43,11 @@
       <td><%= medevaccase.notes %></td>
       <td><%= medevaccase.missioncomplete %></td>
       <td><%= link_to 'view', medevaccase, class: "btn btn-primary" %></td>
+      <% if current_user.admin == true %>
       <td><%= link_to 'Edit', edit_medevaccase_path(medevaccase), class:"btn btn-info" %></td>
       <td><%= link_to 'Delete', medevaccase, method: :delete, data: { confirm: 'Are you sure?' },
                       class:"btn btn-danger" %></td>
+      <% end %>
     </tr>
   <% end %>
   </tbody>

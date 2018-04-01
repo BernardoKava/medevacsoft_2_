@@ -5,7 +5,8 @@ class MedevaccasesController < ApplicationController
   # GET /medevaccases
   # GET /medevaccases.json
   def index
-    @medevaccases = current_user.medevaccases.all
+    @user = current_user.email
+    @medevaccases = Medevaccase.where(email: @user)
 
   end
 
@@ -22,7 +23,8 @@ class MedevaccasesController < ApplicationController
 
   def opencases
     @elem = 'No'
-    @medevaccases = current_user.medevaccases.where(missioncomplete: @elem)
+    @user = current_user.email
+    @medevaccases = Medevaccase.where(missioncomplete: @elem, email: @user)
     render action: :index
   end
 
@@ -37,6 +39,12 @@ class MedevaccasesController < ApplicationController
     @medevaccase = current_user.medevaccases.new
   end
 
+  def distribution
+    @casebycompany = current_user.companyalias
+    @medevaccases = Medevaccase.where(caseownercompany: @casebycompany)
+    render action: :index
+  end
+
   # GET /medevaccases/1/edit
   def edit
   end
@@ -45,7 +53,7 @@ class MedevaccasesController < ApplicationController
   # POST /medevaccases.json
   def create
     @medevaccase = current_user.medevaccases.new(medevaccase_params)
-    @user = current_user.email
+
 
     respond_to do |format|
       if @medevaccase.save
@@ -89,9 +97,12 @@ class MedevaccasesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def medevaccase_params
-      params.require(:medevaccase).permit(:patientFname, :patientLname, :dob, :diagnosis, :treatment, :catName,
+      params.require(:medevaccase).permit(:catName,
                                           :startDate, :completionDate, :toCountry, :fromCountry, :currentHospitalName,
                                           :currentHospitalAddress, :receivingHospitalName, :receivingHospitalAddress,
-                                          :notes, :missioncomplete, :email)
+                                          :notes, :missioncomplete,
+                                          :email, :caseownercompany,
+                                          patients_attributes: [:id, :fname, :lname, :dob, :diagnosis,
+                                                                :treatment, :phone, :email, :nationality, :_destroy])
     end
 end

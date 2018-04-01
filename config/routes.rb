@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :hospitals
   get 'dispatcherdash/index'
 
   get 'messages/create'
@@ -17,9 +18,13 @@ Rails.application.routes.draw do
 
   get 'medevaccases/opencases'
 
+  get 'medevaccases/distribution'
+
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   resources :medevaccases
+  resources :patients
   resources :conversations do
     resources :messages
     collection do

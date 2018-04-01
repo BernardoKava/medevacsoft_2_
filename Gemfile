@@ -22,6 +22,8 @@ gem 'mailboxer'
 gem 'mini_magick'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate', '1.0.0'
+gem 'cocoon'
+gem 'jquery-ui-rails'
 
 
 group :development, :test do
@@ -34,6 +36,7 @@ group :development do
   gem 'listen',                '3.1.5'
   gem 'spring',                '2.0.2'
   gem 'spring-watcher-listen', '2.0.1'
+  gem 'nifty-generators'
 end
 
 group :test do
@@ -51,3 +54,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'mocha', group: :test

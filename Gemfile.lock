@@ -55,6 +55,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    cocoon (1.2.11)
     coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -138,6 +139,7 @@ GEM
     mailboxer (0.15.1)
       carrierwave (>= 0.5.8)
       rails (>= 5.0.0)
+    metaclass (0.0.4)
     method_source (0.9.0)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
@@ -151,9 +153,12 @@ GEM
       builder
       minitest (>= 5.0)
       ruby-progressbar
+    mocha (1.4.0)
+      metaclass (~> 0.0.1)
     multi_json (1.13.1)
     nenv (0.3.0)
     nested_form (0.3.2)
+    nifty-generators (0.4.6)
     nio4r (2.3.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
@@ -277,6 +282,7 @@ DEPENDENCIES
   bootstrap-sass (= 3.3.7)
   bootstrap-will_paginate (= 1.0.0)
   byebug (= 9.0.6)
+  cocoon
   coffee-rails (= 4.2.2)
   devise
   gravtastic
@@ -286,10 +292,13 @@ DEPENDENCIES
   guard-shell
   jbuilder (= 2.7.0)
   jquery-rails (= 4.3.1)
+  jquery-ui-rails
   listen (= 3.1.5)
   mailboxer
   mini_magick
   minitest-reporters (= 1.1.14)
+  mocha
+  nifty-generators
   pg (= 0.18.4)
   puma (= 3.9.1)
   rails (= 5.1.4)

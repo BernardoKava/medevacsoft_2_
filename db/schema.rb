@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180331131242) do
+ActiveRecord::Schema.define(version: 20180401190801) do
+
+  create_table "hospitals", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "country"
+    t.string "phone"
+    t.string "email"
+    t.string "info"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "mailboxer_conversation_opt_outs", force: :cascade do |t|
     t.string "unsubscriber_type"
@@ -67,11 +78,6 @@ ActiveRecord::Schema.define(version: 20180331131242) do
   end
 
   create_table "medevaccases", force: :cascade do |t|
-    t.string "patientFname"
-    t.string "patientLname"
-    t.date "dob"
-    t.string "diagnosis"
-    t.string "treatment"
     t.string "catName"
     t.date "startDate"
     t.date "completionDate"
@@ -87,6 +93,22 @@ ActiveRecord::Schema.define(version: 20180331131242) do
     t.integer "user_id"
     t.string "missioncomplete"
     t.string "email"
+    t.string "caseownercompany"
+    t.string "assignedto"
+  end
+
+  create_table "patients", force: :cascade do |t|
+    t.string "fname"
+    t.string "lname"
+    t.date "dob"
+    t.string "diagnosis"
+    t.string "treatment"
+    t.string "phone"
+    t.string "email"
+    t.string "nationality"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "medevaccase_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -104,6 +126,8 @@ ActiveRecord::Schema.define(version: 20180331131242) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "dispatcher"
+    t.string "companyalias"
+    t.boolean "clientadmin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
