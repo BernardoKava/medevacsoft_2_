@@ -1,0 +1,188 @@
+<% provide(:title ) %>
+<%= form_with(model: medevaccase, local: true) do |form| %>
+  <% if medevaccase.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(medevaccase.errors.count, "error") %> prohibited this medevaccase from being saved:</h2>
+
+      <ul>
+      <% medevaccase.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label "Owner Reference:" %>
+    <%= form.text_field :user_id, id: :medevaccase_user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Owner email:" %>
+    <%= form.text_field :email, id: :medevaccase_email %>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="field">
+    <%= form.label "[Patient] First Name:" %>
+    <%= form.text_field :patientFname, id: :medevaccase_patientFname %>
+  </div>
+
+  <div class="field">
+    <%= form.label "[Patient] Last Name:" %>
+    <%= form.text_field :patientLname, id: :medevaccase_patientLname %>
+  </div>
+
+  <div class="field">
+    <%= form.label "[Patient] Date Of Birth:" %>
+    <%= form.date_select :dob, id: :medevaccase_dob %>
+  </div>
+
+  <div class="field">
+    <%= form.label "[Patient] Diagnosis:" %>
+    <%= form.text_field :diagnosis, id: :medevaccase_diagnosis %>
+  </div>
+
+  <div class="field">
+    <%= form.label "[Patient] Treatment:" %>
+    <%= form.text_field :treatment, id: :medevaccase_treatment %>
+  </div>
+
+  <div class="field">
+    <%= form.label "[Case] Category:" %>
+    <%= form.text_field :catName, id: :medevaccase_catName %>
+  </div>
+
+  <div class="field">
+    <%= form.label "[Case] Start Date:" %>
+    <%= form.date_select :startDate, id: :medevaccase_startDate %>
+  </div>
+
+  <div class="field">
+    <%= form.label "[Case] Completion Date:" %>
+    <%= form.date_select :completionDate, id: :medevaccase_completionDate %>
+  </div>
+
+
+
+  <div class="control-group">
+
+    <%= form.label "From (County):", class: 'control-label' %>
+    <div class ="controls">
+      <%= form.select(:fromCountry, options_for_select([['Congo','Congo'], ['France','France']])) %>
+    </div>
+
+  </div>
+
+
+
+
+  <div class="field">
+    <%= form.label :toCountry %>
+    <%= form.text_field :toCountry, id: :medevaccase_toCountry %>
+  </div>
+
+
+  <div class="field">
+    <%= form.label "[Patient] Current Hospital Name:" %>
+    <%= form.text_field :currentHospitalName, id: :medevaccase_currentHospitalName %>
+  </div>
+
+  <div class="field">
+    <%= form.label "[Patient] Current Hospital Address:" %>
+    <%= form.text_field :currentHospitalAddress, id: :medevaccase_currentHospitalAddress %>
+  </div>
+
+  <div class="field">
+    <%= form.label "[Patient] Receiving Hospital Name:" %>
+    <%= form.text_field :receivingHospitalName, id: :medevaccase_receivingHospitalName %>
+  </div>
+
+  <div class="field">
+    <%= form.label "[Patient] Receiving Hospital Address:" %>
+    <%= form.text_field :receivingHospitalAddress, id: :medevaccase_receivingHospitalAddress %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Case Notes" %>
+    <%= form.text_area :notes, id: :medevaccase_notes %>
+  </div>
+
+
+  <div class="control-group">
+
+    <%= form.label "Mission Complete:", class: 'control-label' %>
+    <div class ="controls">
+      <%= form.select(:missioncomplete, options_for_select([['No','No'], ['Yes','Yes']])) %>
+    </div>
+
+  </div>
+
+  <div>
+    <% form.fields_for :patients do |builder| %>
+      <div class="fields">
+
+        <p>
+          <%= builder.label :fname, "First Name" %> <br />
+          <%= builder.text_area :fname, :rows => 3 %>
+        </p>
+
+        <p>
+          <%= builder.label :lname, "Last Name" %> <br />
+          <%= builder.text_field :lname, id: :patient_lname %>
+        </p>
+
+        <p>
+          <%= builder.label :dob, "Date of Birth" %> <br />
+          <%= builder.text_field :dob, id: :patient_dob %>
+        </p>
+
+        <p>
+          <%= builder.label :diagnosis, "Diagnosis" %> <br />
+          <%= builder.text_field :diagnosis, id: :patient_diagnosis %>
+        </p>
+
+        <p>
+          <%= builder.label :treatment, "Treatment" %> <br />
+          <%= builder.text_field :treatment, id: :patient_treatment %>
+        </p>
+
+        <p>
+          <%= builder.label :phone, "Phone" %> <br />
+          <%= builder.text_field :treatment, id: :patient_treatment %>
+        </p>
+
+        <p>
+          <%= builder.label :email, "email" %> <br />
+          <%= builder.text_field :email, id: :patient_email %>
+        </p>
+
+        <p>
+          <%= builder.label :nationality, "Nationality" %> <br />
+          <%= builder.text_field :nationality, id: :patient_nationality %>
+        </p>
+
+
+      </div>
+
+
+    <% end %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+<% end %>
