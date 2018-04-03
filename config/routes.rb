@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :rhospitals
   resources :hospitals
   get 'dispatcherdash/index'
 
@@ -17,6 +18,8 @@ Rails.application.routes.draw do
   get 'medevaccases/dispatcheropencases'
 
   get 'medevaccases/opencases'
+
+  get 'medevaccases/closedcases'
 
   get 'medevaccases/distribution'
 

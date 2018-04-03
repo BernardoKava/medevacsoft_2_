@@ -1,7 +1,11 @@
 <% provide(:title, "View Case") %>
 <p id="notice"><%= notice %></p>
 
+<hr/>
 
+<strong><h2>A. Case Owner Details</h2></strong>
+
+<hr/>
 
 <p>
   <strong>Case Reference:</strong>
@@ -19,7 +23,11 @@
   <%= @medevaccase.email %>
 </p>
 
+<hr />
 
+<strong><h2>B. Patient Details</h2></strong>
+
+<hr />
 <div>
   <% for patient in @medevaccase.patients %>
     <p>
@@ -64,12 +72,11 @@
   <% end %>
 </div>
 
+<hr/>
 
+<strong><h2>C. Case Details</h2></strong>
 
-
-
-
-
+<hr/>
 
 <p>
   <strong>Case Category:</strong>
@@ -96,25 +103,121 @@
   <%= @medevaccase.fromCountry %>
 </p>
 
-<p>
-  <strong>Current Hospital Name:</strong>
-  <%= @medevaccase.currentHospitalName %>
-</p>
 
-<p>
-  <strong>Current Hospital Address:</strong>
-  <%= @medevaccase.currentHospitalAddress %>
-</p>
+<hr/>
+<strong><h2>F. Accompanying Person(s) Details</h2></strong>
 
-<p>
-  <strong>Receiving Hospital Name:</strong>
-  <%= @medevaccase.receivingHospitalName %>
-</p>
+<hr/>
+<div>
+  <% for accompanyingperson in @medevaccase.accompanyingpeople %>
+    <p>
+      <strong>[Accompanying Person] Name:</strong>
+      <%=h accompanyingperson.name %>
+    </p>
 
-<p>
-  <strong>Receiving Hospital Address:</strong>
-  <%= @medevaccase.receivingHospitalAddress %>
-</p>
+    <p>
+      <strong>[Accompanying Person] Phone:</strong>
+      <%=h accompanyingperson.phone %>
+    </p>
+
+    <p>
+      <strong>[Accompanying Person] Email:</strong>
+      <%=h accompanyingperson.email %>
+    </p>
+
+    <p>
+      <strong>[Accompanying Person] Nationality:</strong>
+      <%=h accompanyingperson.nationality %>
+    </p>
+
+    <p>
+      <strong>[Accompanying Person] Relationship:</strong>
+      <%=h accompanyingperson.relationship %>
+    </p>
+
+    <p>
+      <strong>[Accompanying Person] Consent Given:</strong>
+      <%=h accompanyingperson.patientconsent %>
+    </p>
+
+  <% end %>
+</div>
+
+<hr/>
+<strong><h2>G. Contact Person(s) Details</h2></strong>
+<hr/>
+
+
+<div>
+  <% for contactperson in @medevaccase.contactpeople %>
+    <p>
+      <strong>[contact Person] Name:</strong>
+      <%=h contactperson.name %>
+    </p>
+
+    <p>
+      <strong>[Contact Person] Phone:</strong>
+      <%=h contactperson.phone %>
+    </p>
+
+    <p>
+      <strong>[Contact Person] Email:</strong>
+      <%=h contactperson.email %>
+    </p>
+
+    <p>
+      <strong>[Contact Person] Relationship:</strong>
+      <%=h contactperson.relationship %>
+    </p>
+
+    <p>
+      <strong>[Contact Person] Consent Given:</strong>
+      <%=h contactperson.patientconsent %>
+    </p>
+
+  <% end %>
+</div>
+
+
+<hr/>
+<strong><h2>H. Stakholder(s) Details</h2></strong>
+<hr/>
+
+<div>
+  <% for stakeholder in @medevaccase.stakeholders %>
+    <p>
+      <strong>[Stakeholder] Name:</strong>
+      <%=h stakeholder.name %>
+    </p>
+
+    <p>
+      <strong>[Stakeholder] Phone:</strong>
+      <%=h stakeholder.phone %>
+    </p>
+
+    <p>
+      <strong>[Stakeholder] Email:</strong>
+      <%=h stakeholder.email %>
+    </p>
+
+    <p>
+      <strong>[Stakeholder] Relationship:</strong>
+      <%=h stakeholder.relationship %>
+    </p>
+
+    <p>
+      <strong>[Stakeholder] Consent Given:</strong>
+      <%=h stakeholder.patientconsent %>
+    </p>
+
+  <% end %>
+</div>
+
+
+
+
+
+
 
 <p>
   <strong>Case Notes:</strong>
@@ -128,5 +231,5 @@
   <%= @medevaccase.missioncomplete %>
 </p>
 
-<%= link_to 'Edit', edit_medevaccase_path(@medevaccase), class:"btn btn-info" %> |
+<%= link_to 'Pick', edit_medevaccase_path(@medevaccase), class:"btn btn-info" %> |
 <%= link_to 'Back', medevaccases_path, class:"btn btn-info" %>

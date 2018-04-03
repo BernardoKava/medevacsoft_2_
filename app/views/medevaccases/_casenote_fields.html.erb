@@ -1,0 +1,17 @@
+
+<div class="nested-fields">
+
+  <div class = "field">
+    <%= f.label  "Phase:"  %>
+    <%= f.text_field :casephase %>
+  </div>
+
+  <div class = "field">
+    <%= f.label "Notes:" %>
+    <%= f.text_field :notes %>
+  </div>
+
+  <%= link_to_remove_association 'Remove Case-Phase', f %>
+
+</div>
+

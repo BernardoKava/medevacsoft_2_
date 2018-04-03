@@ -5,6 +5,7 @@ class MedevaccasesController < ApplicationController
   # GET /medevaccases
   # GET /medevaccases.json
   def index
+    @title = '[My Case History - Open & Closed Cases]'
     @user = current_user.email
     @medevaccases = Medevaccase.where(email: @user)
 
@@ -16,13 +17,23 @@ class MedevaccasesController < ApplicationController
   end
 
   def dispatcheropencases
+    @title = '[Open Cases - Dispatcher View]'
     @elem = 'No'
     @medevaccases = Medevaccase.where(missioncomplete: @elem)
     render action: :index
   end
 
   def opencases
+    @title = '[Open Cases]'
     @elem = 'No'
+    @user = current_user.email
+    @medevaccases = Medevaccase.where(missioncomplete: @elem, email: @user)
+    render action: :index
+  end
+
+  def closedcases
+    @title = '[Closed Cases]'
+    @elem = 'Yes'
     @user = current_user.email
     @medevaccases = Medevaccase.where(missioncomplete: @elem, email: @user)
     render action: :index
@@ -37,9 +48,11 @@ class MedevaccasesController < ApplicationController
   # GET /medevaccases/new
   def new
     @medevaccase = current_user.medevaccases.new
+
   end
 
   def distribution
+    @title = '[Manager View]'
     @casebycompany = current_user.companyalias
     @medevaccases = Medevaccase.where(caseownercompany: @casebycompany)
     render action: :index
@@ -98,11 +111,18 @@ class MedevaccasesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def medevaccase_params
       params.require(:medevaccase).permit(:catName,
-                                          :startDate, :completionDate, :toCountry, :fromCountry, :currentHospitalName,
-                                          :currentHospitalAddress, :receivingHospitalName, :receivingHospitalAddress,
+                                          :startDate, :completionDate, :toCountry, :fromCountry, :hospital_id,
+                                          :rhospital_id,
                                           :notes, :missioncomplete,
                                           :email, :caseownercompany,
                                           patients_attributes: [:id, :fname, :lname, :dob, :diagnosis,
-                                                                :treatment, :phone, :email, :nationality, :_destroy])
+                                                                :treatment, :phone, :email, :nationality, :_destroy],
+                                          accompanyingpeople_attributes: [:id, :name, :phone, :email, :nationality,
+                                                                          :relationship, :patientconsent, :_destroy],
+                                          contactpeople_attributes:[:id, :name, :phone, :email,
+                                                                    :relationship, :patientconsent, :medevaccase_id, :_destroy],
+                                          stakeholders_attributes: [:id, :name, :phone, :email, :relationship,
+                                                                    :patientconsent, :_destroy],
+                                          casenotes_attributes: [:id, :casephase, :notes, :_destroy])
     end
 end

@@ -1,10 +1,20 @@
 <component name="ProjectDictionaryState">
   <dictionary name="bkava">
     <words>
+      <w>accompanyingpeople</w>
+      <w>accompanyingperson</w>
       <w>casebycompany</w>
+      <w>casenotes</w>
       <w>caseownercompany</w>
+      <w>casephase</w>
+      <w>chospitalname</w>
       <w>companyalias</w>
+      <w>contactpeople</w>
+      <w>expediating</w>
       <w>lname</w>
+      <w>misceleneous</w>
+      <w>patientconsent</w>
+      <w>rhospital</w>
     </words>
   </dictionary>
 </component>

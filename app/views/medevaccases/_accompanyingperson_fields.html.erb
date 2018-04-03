@@ -1,0 +1,39 @@
+
+<div class="nested-fields">
+
+  <div class = "field">
+    <%= f.label  "Name:"  %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class = "field">
+    <%= f.label "Phone:" %>
+    <%= f.text_field :phone %>
+  </div>
+
+  <div class = "field">
+    <%= f.label "Email:" %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class = "field">
+    <%= f.label  "Nationality:" %>
+    <%= f.text_field :nationality %>
+  </div>
+
+  <div class ="field">
+    <%= f.label "Relationship:" %>
+    <%= f.text_field :relationship %>
+  </div>
+
+  <div class = "field">
+    <%= f.label "Consent Given:" %>
+    <%= f.text_field :patientconsent %>
+  </div>
+
+
+  <%= link_to_remove_association 'Remove Person', f %>
+
+</div>
+
+

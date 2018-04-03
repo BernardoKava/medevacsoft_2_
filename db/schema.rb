@@ -10,7 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180401190801) do
+ActiveRecord::Schema.define(version: 20180403000332) do
+
+  create_table "accompanyingpeople", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.string "email"
+    t.string "nationality"
+    t.string "relationship"
+    t.string "patientconsent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "medevaccase_id"
+  end
+
+  create_table "casenotes", force: :cascade do |t|
+    t.string "casephase"
+    t.string "notes"
+    t.integer "medevaccase_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contactpeople", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.string "email"
+    t.string "relationship"
+    t.string "patientconsent"
+    t.integer "medevaccase_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "hospitals", force: :cascade do |t|
     t.string "name"
@@ -83,10 +114,6 @@ ActiveRecord::Schema.define(version: 20180401190801) do
     t.date "completionDate"
     t.string "toCountry"
     t.string "fromCountry"
-    t.string "currentHospitalName"
-    t.string "currentHospitalAddress"
-    t.string "receivingHospitalName"
-    t.string "receivingHospitalAddress"
     t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -94,7 +121,8 @@ ActiveRecord::Schema.define(version: 20180401190801) do
     t.string "missioncomplete"
     t.string "email"
     t.string "caseownercompany"
-    t.string "assignedto"
+    t.integer "hospital_id"
+    t.integer "rhospital_id"
   end
 
   create_table "patients", force: :cascade do |t|
@@ -106,6 +134,28 @@ ActiveRecord::Schema.define(version: 20180401190801) do
     t.string "phone"
     t.string "email"
     t.string "nationality"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "medevaccase_id"
+  end
+
+  create_table "rhospitals", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "country"
+    t.string "phone"
+    t.string "email"
+    t.string "info"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "stakeholders", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.string "email"
+    t.string "relationship"
+    t.string "patientconsent"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "medevaccase_id"

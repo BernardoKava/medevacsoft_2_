@@ -1,16 +1,6 @@
 <% provide(:title ) %>
 <%= form_for @medevaccase do |f| %>
-  <% if medevaccase.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(medevaccase.errors.count, "error") %> prohibited this medevaccase from being saved:</h2>
-
-      <ul>
-        <% medevaccase.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'errors_messages' %>
   <hr />
 
   <strong><h2>A. Case Owner Details</h2></strong>
@@ -65,15 +55,11 @@
 
 
   <div class="control-group">
-
     <%= f.label "From (County):", class: 'control-label' %>
     <div class ="controls">
       <%= f.select(:fromCountry, options_for_select([['Congo','Congo'], ['France','France']])) %>
     </div>
-
   </div>
-
-
 
 
   <div class="field">
@@ -81,32 +67,101 @@
     <%= f.text_field :toCountry %>
   </div>
 
+<hr />
+  <strong><h2>D. Expediating Hospital Details</h2></strong>
 
-  <strong><h2>C. Hospital Details</h2></strong>
 
-
-  <div class="field">
-    <%= f.label "[Patient] Current Hospital Name:" %>
-    <%= f.text_field :currentHospitalName %>
+  <div class="control-group">
+    <%= f.label :hospital_id, "Hospital Name",class: 'control-label' %>
+    <div class ="controls">
+      <%= f.collection_select :hospital_id, Hospital.order(:name), :id, :name, include_blank: true %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label "[Patient] Current Hospital Address:" %>
-    <%= f.text_field :currentHospitalAddress %>
+  <hr />
+  <strong><h2>E. Receiving Hospital Details</h2></strong>
+
+
+  <div class="control-group">
+    <%= f.label :rhospital_id, "Hospital Name",class: 'control-label' %>
+    <div class ="controls">
+      <%= f.collection_select :rhospital_id, Rhospital.order(:name), :id, :name, include_blank: true %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label "[Patient] Receiving Hospital Name:" %>
-    <%= f.text_field :receivingHospitalName %>
+  <hr />
+
+  <strong><h2>F. Accompanying Person(s) Details</h2></strong>
+
+  <div class="accompanyingpeople-details ">
+    <%= f.fields_for :accompanyingpeople do |person| %>
+
+      <%= render 'accompanyingperson_fields', :f => person %>
+
+    <% end %>
+    <div class = "links">
+      <%= link_to_add_association 'Add Person', f, :accompanyingpeople %>
+      <p class="count">Total: <span><%= @medevaccase.accompanyingpeople.count %></span></p>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label "[Patient] Receiving Hospital Address:" %>
-    <%= f.text_field :receivingHospitalAddress %>
+  <hr/>
+
+  <strong><h2>G. Contact Person(s) Details</h2></strong>
+
+  <div class="contactpeople-details ">
+    <%= f.fields_for :contactpeople do |person| %>
+
+      <%= render 'contactperson_fields', :f => person %>
+
+    <% end %>
+    <div class = "links">
+      <%= link_to_add_association 'Add Person', f, :contactpeople %>
+      <p class="count">Total: <span><%= @medevaccase.contactpeople.count %></span></p>
+    </div>
   </div>
 
+  <hr/>
+
+  <strong><h2>H. Stakeholder(s) Details</h2></strong>
+
+  <hr/>
+
+  <div class="stakeholder-details ">
+    <%= f.fields_for :stakeholders do |stakeholder| %>
+
+      <%= render 'stakeholder_fields', :f => stakeholder %>
+
+    <% end %>
+    <div class = "links">
+      <%= link_to_add_association 'Add Stakeholder', f, :stakeholders %>
+      <p class="count">Total: <span><%= @medevaccase.stakeholders.count %></span></p>
+    </div>
+  </div>
+
+
+
+
+  <hr/>
+  <strong><h2>I. Case Notes </h2></strong>
+  <hr/>
+
+  <%= f.fields_for :casenotes do |note| %>
+
+    <%= render 'stakeholder_fields', :f => note %>
+
+  <% end %>
+  <div class = "links">
+    <%= link_to_add_association 'Add Case-Phase', f, :casenotes %>
+    <p class="count">Total: <span><%= @medevaccase.casenotes.count %></span></p>
+  </div>
+  </div>
+
+
+  <hr/>
+
   <div class="field">
-    <%= f.label "Case Notes" %>
+    <%= f.label "Misceleneous" %>
     <%= f.text_area :notes %>
   </div>
 
@@ -127,7 +182,8 @@
       <%= f.submit 'Save',data: { confirm: 'Saving the case may change its ownership.
 Please check to ensure that the owner has been assigned properly.
 Are you sure you want to proceed?'} %>
-
   </div>
+
+
 
 <% end %>
