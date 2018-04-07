@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180403000332) do
+ActiveRecord::Schema.define(version: 20180407204417) do
 
   create_table "accompanyingpeople", force: :cascade do |t|
     t.string "name"
@@ -52,6 +52,18 @@ ActiveRecord::Schema.define(version: 20180403000332) do
     t.string "info"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "insurers", force: :cascade do |t|
+    t.string "name"
+    t.string "companyalias"
+    t.string "address"
+    t.string "email"
+    t.string "phone"
+    t.string "contactperson"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "active"
   end
 
   create_table "mailboxer_conversation_opt_outs", force: :cascade do |t|
@@ -123,6 +135,7 @@ ActiveRecord::Schema.define(version: 20180403000332) do
     t.string "caseownercompany"
     t.integer "hospital_id"
     t.integer "rhospital_id"
+    t.float "cost"
   end
 
   create_table "patients", force: :cascade do |t|
@@ -139,6 +152,14 @@ ActiveRecord::Schema.define(version: 20180403000332) do
     t.integer "medevaccase_id"
   end
 
+  create_table "pvettinginfos", force: :cascade do |t|
+    t.string "heading"
+    t.string "notes"
+    t.integer "serviceprovider_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "rhospitals", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -148,6 +169,27 @@ ActiveRecord::Schema.define(version: 20180403000332) do
     t.string "info"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "serviceportfolios", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.integer "serviceprovider_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "serviceproviders", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "email"
+    t.string "phone"
+    t.string "services"
+    t.string "contactperson"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "companyalias"
+    t.boolean "entityactive"
   end
 
   create_table "stakeholders", force: :cascade do |t|
@@ -178,8 +220,18 @@ ActiveRecord::Schema.define(version: 20180403000332) do
     t.boolean "dispatcher"
     t.string "companyalias"
     t.boolean "clientadmin"
+    t.integer "serviceprovider_id"
+    t.string "active"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "vettinginfos", force: :cascade do |t|
+    t.string "heading"
+    t.string "notes"
+    t.integer "insurer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

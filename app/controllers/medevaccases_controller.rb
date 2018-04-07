@@ -114,7 +114,7 @@ class MedevaccasesController < ApplicationController
                                           :startDate, :completionDate, :toCountry, :fromCountry, :hospital_id,
                                           :rhospital_id,
                                           :notes, :missioncomplete,
-                                          :email, :caseownercompany,
+                                          :email, :caseownercompany, :cost,
                                           patients_attributes: [:id, :fname, :lname, :dob, :diagnosis,
                                                                 :treatment, :phone, :email, :nationality, :_destroy],
                                           accompanyingpeople_attributes: [:id, :name, :phone, :email, :nationality,

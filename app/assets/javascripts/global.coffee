@@ -59,3 +59,23 @@ jQuery(document).on 'turbolinks:load', ->
 
   contactpeople.on 'cocoon:after-remove', (e, removed_el) ->
   recount()
+
+
+
+  serviceportfolios = $('#serviceportfolios')
+  count = serviceportfolios.find('.count > span')
+
+  recount = -> count.text serviceportfolios.find('.nested-fields').size()
+
+  serviceportfolios.on 'cocoon:before-insert', (e, el_to_add) ->
+    el_to_add.fadeIn(1000)
+
+  serviceportfolios.on 'cocoon:after-insert', (e, added_el) ->
+  added_el.effect('highlight', {}, 500)
+
+  serviceportfolios.on 'cocoon:before-remove', (e, el_to_remove) ->
+  $(this).data('remove-timeout', 1000)
+  el_to_remove.fadeOut(1000)
+
+  serviceportfolios.on 'cocoon:after-remove', (e, removed_el) ->
+  recount()

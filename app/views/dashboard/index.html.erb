@@ -29,6 +29,8 @@
     <% if current_user.admin == true %>
       <li><%= link_to "Administration Area", rails_admin_path %></li>
       <li><%= link_to "Rhospitals", rhospitals_path %></li>
+      <li><%= link_to "Service Providers", serviceproviders_path %></li>
+      <li><%= link_to "Insurers", insurers_path %></li>
     <% end %>
 
     <% if current_user.clientadmin == true %>

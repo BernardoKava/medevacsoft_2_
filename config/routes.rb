@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  resources :insurers
+  resources :serviceproviders
   resources :rhospitals
   resources :hospitals
   get 'dispatcherdash/index'
