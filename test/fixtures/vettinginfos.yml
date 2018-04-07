@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  heading: MyString
+  notes: MyString
+  insurer_id: 1
+  serviceprovider_id: 1
+
+two:
+  heading: MyString
+  notes: MyString
+  insurer_id: 1
+  serviceprovider_id: 1

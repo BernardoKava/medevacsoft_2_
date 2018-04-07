@@ -1,0 +1,73 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @serviceprovider.name %>
+</p>
+
+<p>
+  <strong>Company Alias:</strong>
+  <%= @serviceprovider.companyalias %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @serviceprovider.entityactive %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @serviceprovider.address %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @serviceprovider.email %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @serviceprovider.phone %>
+</p>
+
+<% for serviceportfolio in @serviceprovider.serviceportfolios %>
+  <p>
+    <strong>[Service] Name:</strong>
+    <%=h serviceportfolio.name %>
+  </p>
+
+  <p>
+    <strong>[Service] Description:</strong>
+    <textarea rows="4" cols="50" readonly>
+      <%=h serviceportfolio.description %>
+    </textarea>
+  </p>
+
+<hr/>
+
+<% end %>
+
+<% for pvettinginfo in @serviceprovider.pvettinginfos %>
+  <p>
+    <strong> [Vetting] Heading:</strong>
+    <%=h pvettinginfo.heading %>
+  </p>
+
+  <p>
+    <strong>[Vetting] Notes:</strong>
+    <textarea rows="4" cols="50" readonly>
+      <%=h pvettinginfo.notes %>
+    </textarea>
+  </p>
+
+
+<% end %>
+
+
+  <p>
+    <strong>Contactperson:</strong>
+    <%= @serviceprovider.contactperson %>
+  </p>
+
+<%= link_to 'Edit', edit_serviceprovider_path(@serviceprovider) %> |
+<%= link_to 'Back', serviceproviders_path %>

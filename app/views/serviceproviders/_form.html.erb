@@ -1,0 +1,78 @@
+<%= form_with(model: serviceprovider, local: true) do |f| %>
+  <% if serviceprovider.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(serviceprovider.errors.count, "error") %> prohibited this serviceprovider from being saved:</h2>
+
+      <ul>
+      <% serviceprovider.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, id: :serviceprovider_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Company Alias" %>
+    <%= f.text_field :companyalias, id: :serviceprovider_companyalias %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label "Status" %>
+    <%= f.text_field :entityactive, id: :serviceprovider_entityactive %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :address %>
+    <%= f.text_field :address, id: :serviceprovider_address %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email, id: :serviceprovider_email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone %>
+    <%= f.text_field :phone, id: :serviceprovider_phone %>
+  </div>
+
+  <div class="services-details ">
+    <%= f.fields_for :serviceportfolios do |portfolio| %>
+
+      <%= render 'serviceportfolio_fields', :f => portfolio %>
+
+    <% end %>
+    <div class = "links">
+      <%= link_to_add_association 'Add Service', f, :serviceportfolios %>
+      <p class="count">Total: <span><%= @serviceprovider.serviceportfolios.count %></span></p>
+    </div>
+  </div>
+
+  <div class="services-details ">
+    <%= f.fields_for :pvettinginfos do |info| %>
+
+      <%= render 'pvettinginfo_fields', :f => info %>
+
+    <% end %>
+    <div class = "links">
+      <%= link_to_add_association 'Add Vetting Item', f, :pvettinginfos %>
+      <p class="count">Total: <span><%= @serviceprovider.pvettinginfos.count %></span></p>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :contactperson %>
+    <%= f.text_field :contactperson, id: :serviceprovider_contactperson %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

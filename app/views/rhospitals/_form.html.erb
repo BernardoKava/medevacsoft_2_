@@ -1,0 +1,47 @@
+<%= form_with(model: rhospital, local: true) do |form| %>
+  <% if rhospital.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(rhospital.errors.count, "error") %> prohibited this rhospital from being saved:</h2>
+
+      <ul>
+      <% rhospital.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :rhospital_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address, id: :rhospital_address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :country %>
+    <%= form.text_field :country, id: :rhospital_country %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone %>
+    <%= form.text_field :phone, id: :rhospital_phone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email, id: :rhospital_email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :info %>
+    <%= form.text_field :info, id: :rhospital_info %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

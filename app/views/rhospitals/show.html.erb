@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @rhospital.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @rhospital.address %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @rhospital.country %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @rhospital.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @rhospital.email %>
+</p>
+
+<p>
+  <strong>Info:</strong>
+  <textarea rows="4" cols="50" readonly>
+    <%= @rhospital.info %>
+  </textarea>
+</p>
+
+<%= link_to 'Edit', edit_rhospital_path(@rhospital) %> |
+<%= link_to 'Back', rhospitals_path %>

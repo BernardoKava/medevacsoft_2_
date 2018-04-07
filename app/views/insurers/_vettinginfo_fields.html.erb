@@ -1,0 +1,18 @@
+
+<div class="nested-fields">
+
+  <div class = "field">
+    <%= f.label  "Heading:"  %>
+    <%= f.text_field :heading %>
+  </div>
+
+  <div class = "field">
+    <%= f.label "Notes:" %>
+    <%= f.text_area :notes %>
+  </div>
+
+
+  <%= link_to_remove_association 'Remove Vetting Item', f %>
+
+
+</div>

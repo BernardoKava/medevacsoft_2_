@@ -1,0 +1,65 @@
+<%= form_with(model: insurer, local: true) do |f| %>
+  <% if insurer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(insurer.errors.count, "error") %> prohibited this insurer from being saved:</h2>
+
+      <ul>
+      <% insurer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, id: :insurer_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :companyalias %>
+    <%= f.text_field :companyalias, id: :insurer_companyalias %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address %>
+    <%= f.text_field :address, id: :insurer_address %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email, id: :insurer_email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone %>
+    <%= f.text_field :phone, id: :insurer_phone %>
+  </div>
+
+  <div class="field">
+    <%= f.label :contactperson %>
+    <%= f.text_field :contactperson, id: :insurer_contactperson %>
+  </div>
+
+  <div class="field">
+    <%= f.label :active %>
+    <%= f.check_box :active, id: :insurer_active %>
+  </div>
+
+
+  <div class="services-details ">
+    <%= f.fields_for :vettinginfos do |vetting| %>
+
+      <%= render 'vettinginfo_fields', :f => vetting %>
+
+    <% end %>
+    <div class = "links">
+      <%= link_to_add_association 'Add Vetting Item', f, :vettinginfos %>
+      <p class="count">Total: <span><%= @insurer.vettinginfos.count %></span></p>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

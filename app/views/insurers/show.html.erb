@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @insurer.name %>
+</p>
+
+<p>
+  <strong>Companyalias:</strong>
+  <%= @insurer.companyalias %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @insurer.address %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @insurer.email %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @insurer.phone %>
+</p>
+
+<p>
+  <strong>Contactperson:</strong>
+  <%= @insurer.contactperson %>
+</p>
+
+<p>
+  <strong>active:</strong>
+  <%= @insurer.active %>
+</p>
+
+<%= link_to 'Edit', edit_insurer_path(@insurer) %> |
+<%= link_to 'Back', insurers_path %>

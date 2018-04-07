@@ -1,0 +1,45 @@
+<% provide(:title, "Providers") %>
+<p id="notice"><%= notice %></p>
+
+<h2>Service Providers</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Company Alias</th>
+      <th>Active</th>
+      <th>Address</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Services</th>
+      <th>Contactperson</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @serviceproviders.each do |serviceprovider| %>
+      <tr>
+        <td><%= serviceprovider.name %></td>
+        <td><%= serviceprovider.companyalias %></td>
+        <td><%= serviceprovider.entityactive %></td>
+        <td><%= serviceprovider.address %></td>
+        <td><%= serviceprovider.email %></td>
+        <td><%= serviceprovider.phone %></td>
+        <td><%= serviceprovider.services %></td>
+        <td><%= serviceprovider.contactperson %></td>
+        <td><%= link_to 'View', serviceprovider %></td>
+        <td><%= link_to 'Edit', edit_serviceprovider_path(serviceprovider) %></td>
+        <td><%= link_to 'Delete', serviceprovider, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<hr/>
+
+<%= link_to 'New Service Provider', new_serviceprovider_path %><br/>
+<%= link_to 'Dashboard', dashboard_index_path %>
